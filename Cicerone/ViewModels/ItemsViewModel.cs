@@ -7,52 +7,24 @@ using Xamarin.Forms;
 
 using Cicerone.Models;
 using Cicerone.Views;
+using Cicerone.Services.Contracts;
+using Cicerone.Services;
 
 namespace Cicerone.ViewModels
 {
 	public class ItemsViewModel : BaseViewModel
 	{
-		public ObservableCollection<Item> Items { get; set; }
+		private readonly IUntappdService _untappdService;
+
+		public ObservableCollection<BeerItem> Items { get; set; }
 		public Command LoadItemsCommand { get; set; }
 
 		public ItemsViewModel()
 		{
 			Title = "Browse";
-			Items = new ObservableCollection<Item>();
-			LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+			Items = new ObservableCollection<BeerItem>();
+			_untappdService = new UntappdService();
 
-			MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
-			{
-				var newItem = item as Item;
-				Items.Add(newItem);
-				await DataStore.AddItemAsync(newItem);
-			});
-		}
-
-		async Task ExecuteLoadItemsCommand()
-		{
-			if (IsBusy)
-				return;
-
-			IsBusy = true;
-
-			try
-			{
-				Items.Clear();
-				var items = await DataStore.GetItemsAsync(true);
-				foreach (var item in items)
-				{
-					Items.Add(item);
-				}
-			}
-			catch (Exception ex)
-			{
-				Debug.WriteLine(ex);
-			}
-			finally
-			{
-				IsBusy = false;
-			}
 		}
 	}
 }

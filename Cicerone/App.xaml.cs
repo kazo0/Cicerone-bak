@@ -13,7 +13,8 @@ namespace Cicerone
 		{
 			InitializeComponent();
 
-			DependencyService.Register<MockDataStore>();
+			Module.Init();
+
 			MainPage = new AppShell();
 		}
 

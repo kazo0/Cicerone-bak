@@ -6,8 +6,8 @@ namespace Cicerone.ViewModels
 {
 	public class ItemDetailViewModel : BaseViewModel
 	{
-		public Item Item { get; set; }
-		public ItemDetailViewModel(Item item = null)
+		public BeerItem Item { get; set; }
+		public ItemDetailViewModel(BeerItem item = null)
 		{
 			Title = item?.Text;
 			Item = item;
