@@ -1,5 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Shell xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Cicerone.Views" RouteHost="companyname.com" RouteScheme="app" Route="Cicerone" FlyoutBehavior="Disabled" Title="Cicerone" x:Class="Cicerone.AppShell">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Shell
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:local="clr-namespace:Cicerone.Views" RouteHost="companyname.com" RouteScheme="app" Route="Cicerone" FlyoutBehavior="Disabled" Title="Cicerone" x:Class="Cicerone.AppShell" Visual="Material">
     <!--
         XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
         XXXXXXXX|                            |XXXXXXXX
