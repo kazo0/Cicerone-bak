@@ -1,7 +1,7 @@
 ﻿using System;
 using Autofac;
 using Cicerone.Services;
-using Cicerone.Services.Contracts;
+using Cicerone.Services.Untappd;
 
 namespace Cicerone
 {

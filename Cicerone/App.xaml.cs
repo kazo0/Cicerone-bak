@@ -13,7 +13,7 @@ namespace Cicerone
 		{
 			InitializeComponent();
 
-			Module.Init();
+			//Module.Init();
 
 			MainPage = new AppShell();
 		}

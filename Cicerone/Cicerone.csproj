@@ -15,8 +15,14 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
     <PackageReference Include="Autofac" Version="4.9.2" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="RestSharp" Version="106.6.9" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Services\Contracts\" />
+    <Compile Remove="Services\IDataStore.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\Untappd\" />
+    <Folder Include="Clients\" />
+    <Folder Include="Controls\" />
   </ItemGroup>
 </Project>

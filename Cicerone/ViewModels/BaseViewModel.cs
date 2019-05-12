@@ -12,7 +12,6 @@ namespace Cicerone.ViewModels
 {
 	public class BaseViewModel : INotifyPropertyChanged
 	{
-		public IDataStore<BeerItem> DataStore => DependencyService.Get<IDataStore<BeerItem>>() ?? new MockDataStore();
 
 		bool isBusy = false;
 		public bool IsBusy
