@@ -21,6 +21,33 @@ namespace Cicerone.Clients
 			_client.UseSerializer(new JsonDeserializer());
 		}
 
+		public async Task<BeerInfo> GetBeerInfo(string beerId)
+		{
+			if (string.IsNullOrEmpty(beerId))
+			{
+				throw new ArgumentNullException(nameof(beerId));
+			}
+
+			var request = new RestRequest($"beer/info/{beerId}");
+			var response = await _client.ExecuteGetTaskAsync(request);
+
+			if (response.StatusCode != HttpStatusCode.OK)
+			{
+				throw new HttpRequestException(response.ErrorMessage);
+			}
+
+			try
+			{
+				return JsonConvert.DeserializeObject<BaseResponse<BeerInfoResponse>>(response.Content)?.Response?.BeerInfo;
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine($"Error occurred when deserializing response: {e.Message}");
+			}
+
+			return null;
+		}
+
 		public async Task<BeerSearchResponse> SearchBeers(string query)
 		{
 			var request = new RestRequest($"search/beer");
@@ -35,7 +62,7 @@ namespace Cicerone.Clients
 
 			try
 			{
-				return JsonConvert.DeserializeObject<BeerSearchResponse>(response.Content);
+				return JsonConvert.DeserializeObject<BaseResponse<BeerSearchResponse>>(response.Content)?.Response;
 			}
 			catch (Exception e)
 			{

@@ -20,9 +20,14 @@ namespace Cicerone.Services.Untappd
 		{
 			var searchResponse = await _untappedClient.SearchBeers(searchTerm);
 
-			return searchResponse?.Response?.Beers?.Items
+			return searchResponse?.Beers?.Items
 				.Select(b => b.Beer)
 				.ToList() ?? Enumerable.Empty<Beer>().ToList();
+		}
+
+		public async Task<BeerInfo> GetBeerInfo(string beerId)
+		{
+			return await _untappedClient.GetBeerInfo(beerId);
 		}
 	}
 }

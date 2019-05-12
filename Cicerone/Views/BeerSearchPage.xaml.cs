@@ -13,11 +13,11 @@ using Cicerone.ViewModels;
 
 namespace Cicerone.Views
 {
-	public partial class ItemsPage : ContentPage
+	public partial class BeerSearchPage : ContentPage
 	{
 		BeerSearchViewModel viewModel;
 
-		public ItemsPage()
+		public BeerSearchPage()
 		{
 			InitializeComponent();
 

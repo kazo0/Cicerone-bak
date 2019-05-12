@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using Cicerone.Views;
 using Xamarin.Forms;
 
 namespace Cicerone
@@ -10,6 +10,8 @@ namespace Cicerone
 		public AppShell()
 		{
 			InitializeComponent();
+
+			Routing.RegisterRoute("beerDetails", typeof(BeerDetailsPage));
 		}
 	}
 }

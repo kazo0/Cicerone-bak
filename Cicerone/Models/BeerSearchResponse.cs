@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Cicerone.Models
 {
-	public class BeerSearchResponse : BaseResponse<BeerSearchResponse>
+	public class BeerSearchResponse
 	{
 		[JsonProperty("message")]
 		public string Message { get; set; }
