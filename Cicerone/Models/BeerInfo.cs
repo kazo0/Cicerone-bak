@@ -14,6 +14,9 @@ namespace Cicerone.Models
 		[JsonProperty("beer_label")]
 		public string BeerLabel { get; set; }
 
+		[JsonProperty("beer_label_hd")]
+		public string BeerLabelHd { get; set; }
+
 		[JsonProperty("beer_abv")]
 		public double BeerAbv { get; set; }
 

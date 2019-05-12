@@ -1,8 +1,18 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Cicerone.Views.BeerDetailsPage">
-    <ContentPage.Content>
-    </ContentPage.Content>
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="Cicerone.Views.BeerDetailsPage"
+	Visual="Material">
+	<StackLayout>
+        <Image Source="{Binding LabelUrl}"
+               Aspect="AspectFit"
+               HeightRequest="200"/>
+        <StackLayout Orientation="Horizontal">
+            
+        </StackLayout>
+        
+        <Label Text="{Binding Description}"
+               FontSize="Medium"/>
+	</StackLayout>
 </ContentPage>

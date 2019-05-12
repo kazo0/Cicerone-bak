@@ -6,38 +6,32 @@ using Xamarin.Forms;
 namespace Cicerone.Views
 {
 	[QueryProperty("BeerId", "beerId")]
+	[QueryProperty("BeerName", "beerName")]
 
 	public partial class BeerDetailsPage : ContentPage
 	{
-		BeerDetailViewModel viewModel;
+		private BeerDetailViewModel _viewModel;
 
-		private string _bid;
-		public string BeerId {
-			get
-			{
-				return _bid;
-			}
-			set
-			{
-				_bid = value;
-			}
+		public string BeerId { get; set; }
+
+		private string _beerName;
+		public string BeerName
+		{
+			get => _beerName;
+			set => _beerName = Title = Uri.UnescapeDataString(value);
 		}
 
 		public BeerDetailsPage()
 		{
 			InitializeComponent();
-
-			
+			BindingContext = _viewModel = new BeerDetailViewModel();
 		}
 
 		protected override async void OnAppearing()
 		{
 			base.OnAppearing();
-			BindingContext = viewModel = new BeerDetailViewModel(_bid);
 
-			await viewModel.Init();
-
-			Title = viewModel.BeerInfo.BeerName;
+			await _viewModel.Init(BeerId);
 		}
 	}
 }

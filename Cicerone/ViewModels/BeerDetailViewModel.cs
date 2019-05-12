@@ -10,17 +10,36 @@ namespace Cicerone.ViewModels
 		private string _beerId;
 		private IUntappdService _untappdService;
 
-		public BeerInfo BeerInfo { get; set; }
+		private BeerInfo _beerInfo;
 
-		public BeerDetailViewModel(string beerId)
+		private string _labelUrl;
+		public string LabelUrl {
+			get => _labelUrl;
+			set => SetProperty(ref _labelUrl, value);
+		}
+
+		private string _description;
+		public string Description
 		{
-			_beerId = beerId ?? throw new ArgumentNullException(nameof(beerId));
+			get => _description;
+			set => SetProperty(ref _description, value);
+		}
+
+		public BeerDetailViewModel()
+		{
 			_untappdService = new UntappdService();
 		}
 
-		public async Task Init()
+		public async Task Init(string beerId)
 		{
-			BeerInfo = await _untappdService.GetBeerInfo(_beerId);
+			_beerId = beerId;
+
+			IsBusy = true;
+			_beerInfo = await _untappdService.GetBeerInfo(_beerId);
+			IsBusy = false;
+
+			LabelUrl = _beerInfo.BeerLabelHd ?? _beerInfo.BeerLabel;
+			Description = _beerInfo.BeerDescription;
 		}
 	}
 }

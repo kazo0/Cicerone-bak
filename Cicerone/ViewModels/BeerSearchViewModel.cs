@@ -33,7 +33,7 @@ namespace Cicerone.ViewModels
 
 		private async Task NewMethod()
 		{
-			await Shell.Current.GoToAsync($"beerDetails?beerId={SelectedBeer.Bid}");
+			await Shell.Current.GoToAsync($"beerDetails?beerId={SelectedBeer.Bid}&beerName={SelectedBeer.BeerName}");
 		}
 
 		private async Task SearchBeer(string query)
